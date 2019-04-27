@@ -52,7 +52,7 @@ export default class SignUpForm extends Component {
             name="password"
             value={password}
           />
-          <button>Sign Up</button>
+          <button type="button">Sign Up</button>
         </form>
       </div>
     );
