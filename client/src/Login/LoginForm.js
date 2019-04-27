@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { login } from '../Actions';
 import './form.css';
 
@@ -71,7 +72,9 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {};
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default connect(
   null,
