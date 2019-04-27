@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../Actions';
 import './form.css';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   state = {
     name: '',
     password: '',
@@ -13,8 +15,20 @@ export default class LoginForm extends Component {
     });
   };
 
+  handleLogin = (e) => {
+    e.preventDefault();
+    const { login } = this.props;
+    const { name, password } = this.state;
+    const user = {
+      name,
+      password,
+    };
+    login(user);
+  };
+
   render() {
     const { name, password } = this.state;
+
     return (
       <>
         <div className="form-container sign-in-container">
@@ -47,10 +61,19 @@ export default class LoginForm extends Component {
               value={password}
             />
             <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+            <button type="button" onClick={this.handleLogin}>
+              Sign In
+            </button>
           </form>
         </div>
       </>
     );
   }
 }
+
+const mapStateToProps = (state) => {};
+
+export default connect(
+  null,
+  { login },
+)(LoginForm);
