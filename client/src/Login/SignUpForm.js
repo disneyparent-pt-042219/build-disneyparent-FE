@@ -6,7 +6,8 @@ export default class SignUpForm extends Component {
   state = {
     name: '',
     password: '',
-    email: '',
+    password2: '',
+    error: '',
   };
 
   handleChange = (e) => {
@@ -15,11 +16,23 @@ export default class SignUpForm extends Component {
     });
   };
 
+  handleSignUp = (e) => {
+    e.preventDefault();
+    const { password, password2 } = this.state;
+    if (password !== password2) {
+      this.setState({
+        error: 'Passwords do not match',
+      });
+    }
+  };
+
   render() {
-    const { name, password, email } = this.state;
+    const {
+      name, password, password2, error
+    } = this.state;
     return (
       <div className="form-container sign-up-container">
-        <form action="#">
+        <form onSubmit={this.handleSignUp}>
           <h1>Create Account</h1>
           <div className="social-container">
             <Link to="/login">
@@ -33,6 +46,17 @@ export default class SignUpForm extends Component {
             </Link>
           </div>
           <span>or use your email for registration</span>
+          {error && (
+            <span
+              style={{
+                backgroundColor: '#F7D7DA',
+                padding: 5,
+                color: '#721B23',
+              }}
+            >
+              {error}
+            </span>
+          )}
           <input
             onChange={this.handleChange}
             type="text"
@@ -42,19 +66,19 @@ export default class SignUpForm extends Component {
           />
           <input
             onChange={this.handleChange}
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-          />
-          <input
-            onChange={this.handleChange}
             type="password"
             placeholder="Password"
             name="password"
             value={password}
           />
-          <FormButton>Sign Up</FormButton>
+          <input
+            onChange={this.handleChange}
+            type="password"
+            placeholder="Confirm Password"
+            name="password2"
+            value={password2}
+          />
+          <FormButton onSubmit={this.handleSignUp}>Sign Up</FormButton>
         </form>
       </div>
     );
