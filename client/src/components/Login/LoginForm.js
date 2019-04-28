@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { login } from '../../Actions/LoginActions';
-import { FormButton } from '../Elements/FormButton';
-import './form.css';
+import { FormButton, FormInput } from '../Elements';
 
 class LoginForm extends Component {
   state = {
@@ -49,20 +48,21 @@ class LoginForm extends Component {
               </Link>
             </div>
             <span>or use your account</span>
-            <input
+            <FormInput
               onChange={this.handleChange}
               type="text"
               placeholder="Name"
               name="name"
               value={name}
             />
-            <input
+            <FormInput
               onChange={this.handleChange}
               type="password"
               placeholder="Password"
               name="password"
               value={password}
             />
+
             <Link to="/login">Forgot your password</Link>
             <FormButton onClick={this.handleLogin}>Sign In</FormButton>
           </form>
