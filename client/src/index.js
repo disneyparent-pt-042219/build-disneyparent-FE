@@ -8,14 +8,14 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import App from './App';
-import reducer from './Reducers';
+import rootReducer from './Reducers';
 
 import * as serviceWorker from './serviceWorker';
 
 const middleware = [logger, thunk];
 
 const store = createStore(
-  reducer,
+  rootReducer,
   composeWithDevTools(applyMiddleware(...middleware)),
 );
 
