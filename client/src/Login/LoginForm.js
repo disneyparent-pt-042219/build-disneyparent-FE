@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { login } from '../Actions';
+import { FormButton } from '../Elements/FormButton';
 import './form.css';
 
 class LoginForm extends Component {
@@ -36,15 +38,15 @@ class LoginForm extends Component {
           <form>
             <h1>Sign in</h1>
             <div className="social-container">
-              <a href="#" className="social">
+              <Link to="/login">
                 <i className="fab fa-facebook-f" />
-              </a>
-              <a href="#" className="social">
+              </Link>
+              <Link to="/login">
                 <i className="fab fa-google-plus-g" />
-              </a>
-              <a href="#" className="social">
+              </Link>
+              <Link to="/login">
                 <i className="fab fa-linkedin-in" />
-              </a>
+              </Link>
             </div>
             <span>or use your account</span>
             <input
@@ -61,10 +63,8 @@ class LoginForm extends Component {
               name="password"
               value={password}
             />
-            <a href="#">Forgot your password?</a>
-            <button type="button" onClick={this.handleLogin}>
-              Sign In
-            </button>
+            <Link to="/login">Forgot your password</Link>
+            <FormButton onClick={this.handleLogin}>Sign In</FormButton>
           </form>
         </div>
       </>

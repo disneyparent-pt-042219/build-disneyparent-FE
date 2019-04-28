@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { FormButton } from '../Elements/FormButton';
 
 export default class SignUpForm extends Component {
   state = {
@@ -20,15 +22,15 @@ export default class SignUpForm extends Component {
         <form action="#">
           <h1>Create Account</h1>
           <div className="social-container">
-            <a href="#" className="social">
+            <Link to="/login">
               <i className="fab fa-facebook-f" />
-            </a>
-            <a href="#" className="social">
+            </Link>
+            <Link to="/login">
               <i className="fab fa-google-plus-g" />
-            </a>
-            <a href="#" className="social">
+            </Link>
+            <Link to="/login">
               <i className="fab fa-linkedin-in" />
-            </a>
+            </Link>
           </div>
           <span>or use your email for registration</span>
           <input
@@ -52,7 +54,7 @@ export default class SignUpForm extends Component {
             name="password"
             value={password}
           />
-          <button type="button">Sign Up</button>
+          <FormButton>Sign Up</FormButton>
         </form>
       </div>
     );
