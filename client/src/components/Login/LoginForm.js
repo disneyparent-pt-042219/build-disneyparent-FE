@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { login } from '../Actions/LoginActions';
+import { login } from '../../Actions/LoginActions';
 import { FormButton } from '../Elements/FormButton';
 import './form.css';
 
