@@ -1,20 +1,9 @@
-import { IS_LOGGING_IN } from '../Actions';
+import { combineReducers } from 'redux';
 
-const initialState = {
-  isLogginIn: false,
-  isLoggedIn: false,
-};
+import LoginReducer from './LoginReducer';
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case IS_LOGGING_IN:
-      return {
-        ...state,
-        isLoggedIn: true,
-      };
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers({
+  login: LoginReducer,
+});
 
-export default reducer;
+export default rootReducer;
