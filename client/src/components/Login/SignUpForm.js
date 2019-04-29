@@ -3,12 +3,16 @@ import { Link, withRouter } from 'react-router-dom';
 import { FormButton, FormInput } from '../Elements';
 
 class SignUpForm extends Component {
-  state = {
-    name: '',
-    password: '',
-    password2: '',
-    error: '',
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      name: '',
+      password: '',
+      password2: '',
+      error: '',
+    };
+  }
 
   handleChange = (e) => {
     this.setState({

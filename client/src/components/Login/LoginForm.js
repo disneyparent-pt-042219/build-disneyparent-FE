@@ -6,10 +6,14 @@ import { login } from '../../Actions/LoginActions';
 import { FormButton, FormInput } from '../Elements';
 
 class LoginForm extends Component {
-  state = {
-    name: '',
-    password: '',
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      name: '',
+      password: '',
+    };
+  }
 
   handleChange = (e) => {
     this.setState({
