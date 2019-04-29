@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createUser } from '../../Actions/UserActions';
 import { FormButton, FormInput } from '../Elements';
 
 class SignUpForm extends Component {
@@ -22,12 +25,18 @@ class SignUpForm extends Component {
 
   handleSignUp = (e) => {
     e.preventDefault();
-    const { password, password2 } = this.state;
+    const { password, password2, name } = this.state;
+    const { createUser } = this.props;
     if (password !== password2) {
       this.setState({
         error: 'Passwords do not match',
       });
     }
+    const user = {
+      name,
+      password,
+    };
+    createUser(user);
   };
 
   render() {
@@ -89,4 +98,11 @@ class SignUpForm extends Component {
   }
 }
 
-export default withRouter(SignUpForm);
+SignUpForm.propTypes = {
+  createUser: PropTypes.func.isRequired,
+}
+
+export default connect(
+  null,
+  { createUser },
+)(SignUpForm);
