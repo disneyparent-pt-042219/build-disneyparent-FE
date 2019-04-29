@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { FormButton } from '../Elements/FormButton';
+import { Link, withRouter } from 'react-router-dom';
+import { FormButton, FormInput } from '../Elements';
 
-export default class SignUpForm extends Component {
-  state = {
-    name: '',
-    password: '',
-    password2: '',
-    error: '',
-  };
+class SignUpForm extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      name: '',
+      password: '',
+      password2: '',
+      error: '',
+    };
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -28,8 +32,8 @@ export default class SignUpForm extends Component {
 
   render() {
     const {
-      name, password, password2, error
-    } = this.state;
+ name, password, password2, error 
+} = this.state;
     return (
       <div className="form-container sign-up-container">
         <form onSubmit={this.handleSignUp}>
@@ -57,21 +61,21 @@ export default class SignUpForm extends Component {
               {error}
             </span>
           )}
-          <input
+          <FormInput
             onChange={this.handleChange}
             type="text"
             placeholder="Name"
             name="name"
             value={name}
           />
-          <input
+          <FormInput
             onChange={this.handleChange}
             type="password"
             placeholder="Password"
             name="password"
             value={password}
           />
-          <input
+          <FormInput
             onChange={this.handleChange}
             type="password"
             placeholder="Confirm Password"
@@ -84,3 +88,5 @@ export default class SignUpForm extends Component {
     );
   }
 }
+
+export default withRouter(SignUpForm);
