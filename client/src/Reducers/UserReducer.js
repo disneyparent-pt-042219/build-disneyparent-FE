@@ -1,8 +1,20 @@
-import { IS_LOGGING_IN } from '../Actions/UserActions';
+import {
+  IS_LOGGING_IN,
+  LOGGED_IN,
+  LOGGED_IN_ERROR,
+  CREATING_ACCOUNT,
+  CREATING_ACCOUNT_ERROR,
+  ACCOUNT_CREATED,
+} from '../Actions/UserActions';
 
 const initialState = {
-  isLogginIn: false,
-  isLoggedIn: false,
+  isLoggingIn: false,
+  isLogedIn: false,
+  userName: '',
+  loginError: '',
+  creatingAccount: false,
+  accountCreated: false,
+  creatingAccountError: '',
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -10,7 +22,37 @@ const UserReducer = (state = initialState, action) => {
     case IS_LOGGING_IN:
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggingIn: true,
+      };
+    case LOGGED_IN:
+      return {
+        ...state,
+        isLoggingIn: false,
+        isLogedIn: true,
+        userName: action.payload.username,
+      };
+    case LOGGED_IN_ERROR:
+      return {
+        ...state,
+        isLoggingIn: false,
+        loginError: action.payload,
+      };
+    case CREATING_ACCOUNT:
+      return {
+        ...state,
+        creatingAccount: true,
+      };
+    case ACCOUNT_CREATED:
+      return {
+        ...state,
+        creatingAccount: false,
+        accountCreated: true,
+      };
+    case CREATING_ACCOUNT_ERROR:
+      return {
+        ...state,
+        creatingAccount: false,
+        creatingAccountError: action.payload,
       };
     default:
       return state;
