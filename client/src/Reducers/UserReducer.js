@@ -1,11 +1,11 @@
-import { IS_LOGGING_IN } from '../Actions/LoginActions';
+import { IS_LOGGING_IN } from '../Actions/UserActions';
 
 const initialState = {
   isLogginIn: false,
   isLoggedIn: false,
 };
 
-const LoginReducer = (state = initialState, action) => {
+const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case IS_LOGGING_IN:
       return {
@@ -17,4 +17,4 @@ const LoginReducer = (state = initialState, action) => {
   }
 };
 
-export default LoginReducer;
+export default UserReducer;
