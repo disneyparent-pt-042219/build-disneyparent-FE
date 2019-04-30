@@ -7,7 +7,7 @@ import { FormButton } from '../Elements/FormButton';
 import { logout } from '../../Actions/UserActions';
 
 function Header(props) {
-  const { user, logout } = props;
+  const { user, logout, isLoggedIn } = props;
   const loggingOut = () => {
     logout();
   };
@@ -22,17 +22,20 @@ function Header(props) {
         <Link to="/login">About Us</Link>
         <Link to="/login">Contact</Link>
       </nav>
-      <div className="right-nav">
-        <Link to="/attractions">Attractions</Link>
-        <Link to="/posts">Posts</Link>
-        <p>
-          {`Welcome ${user}`}
-          <i className="fas fa-user-circle" />
-        </p>
-        <Link to="/login">
-          <FormButton onClick={loggingOut}>Log Out</FormButton>
-        </Link>
-      </div>
+      {/* if user is logged in, display logout menu */}
+      {isLoggedIn && (
+        <div className="right-nav">
+          <Link to="/attractions">Attractions</Link>
+          <Link to="/posts">Posts</Link>
+          <p>
+            {`Welcome ${user}`}
+            <i className="fas fa-user-circle" />
+          </p>
+          <Link to="/login">
+            <FormButton onClick={loggingOut}>Log Out</FormButton>
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
@@ -40,10 +43,12 @@ function Header(props) {
 Header.propTypes = {
   user: PropTypes.string.isRequired,
   logout: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   user: state.user.userName,
+  isLoggedIn: state.user.isLoggedIn,
 });
 
 export default connect(
