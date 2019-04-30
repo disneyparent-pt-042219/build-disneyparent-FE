@@ -14,9 +14,9 @@ function Header(props) {
   return (
     <header>
       <nav>
-        <a href="/home">
+        <Link to={isLoggedIn ? '/home' : '/login'}>
           <img src="/images/logo.png" alt="logo" />
-        </a>
+        </Link>
         <Link to="/login">Parks & Tickets</Link>
         <Link to="/login">Places to Stay</Link>
         <Link to="/login">About Us</Link>
