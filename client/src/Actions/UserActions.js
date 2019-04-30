@@ -4,6 +4,12 @@ export const IS_LOGGING_IN = 'IS_LOGGING_IN';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGGED_IN_ERROR = 'LOGGED_IN_ERROR';
 
+export const CREATING_ACCOUNT = 'CREATING_ACCOUNT';
+export const CREATING_ACCOUNT_ERROR = 'CREATING_ACCOUNT_ERROR';
+export const ACCOUNT_CREATED = 'CREATING_ACCOUNT';
+
+export const LOGOUT = 'LOGOUT';
+
 // TODO Need to verify post url
 export const login = user => (dispatch) => {
   dispatch({ type: IS_LOGGING_IN });
@@ -18,10 +24,6 @@ export const login = user => (dispatch) => {
     });
 };
 
-export const CREATING_ACCOUNT = 'CREATING_ACCOUNT';
-export const CREATING_ACCOUNT_ERROR = 'CREATING_ACCOUNT_ERROR';
-export const ACCOUNT_CREATED = 'CREATING_ACCOUNT';
-
 // TODO Need to verify post url
 export const createUser = user => (dispatch) => {
   dispatch({ type: CREATING_ACCOUNT });
@@ -33,4 +35,10 @@ export const createUser = user => (dispatch) => {
     .catch((err) => {
       dispatch({ type: CREATING_ACCOUNT_ERROR, payload: err });
     });
+};
+
+export const logout = () => (dispatch) => {
+  console.log('logout action');
+  localStorage.removeItem('token');
+  dispatch({ type: LOGOUT });
 };

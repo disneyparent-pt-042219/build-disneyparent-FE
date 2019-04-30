@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 400px;
+            max-width: 500px;
             width: 100%;
             p {
                 margin-top: 23px;
