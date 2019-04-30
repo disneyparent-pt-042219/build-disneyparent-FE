@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import './App.css';
 import GlobalStyle from './Global';
 import Login from './components/Pages/Login';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <div className="App">
-      <h1>Disney Parent =) </h1>
+      <Header />
       <Route path="/login" component={Login} />
       <GlobalStyle />
     </div>

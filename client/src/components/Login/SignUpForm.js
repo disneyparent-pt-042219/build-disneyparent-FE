@@ -33,7 +33,7 @@ class SignUpForm extends Component {
       });
     }
     const user = {
-      name,
+      username: name,
       password,
     };
     createUser(user);
@@ -73,7 +73,7 @@ class SignUpForm extends Component {
           <FormInput
             onChange={this.handleChange}
             type="text"
-            placeholder="Name"
+            placeholder="Username"
             name="name"
             value={name}
           />

@@ -5,6 +5,7 @@ import {
   CREATING_ACCOUNT,
   CREATING_ACCOUNT_ERROR,
   ACCOUNT_CREATED,
+  LOGOUT,
 } from '../Actions/UserActions';
 
 const initialState = {
@@ -53,6 +54,12 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         creatingAccount: false,
         creatingAccountError: action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        userName: '',
       };
     default:
       return state;
