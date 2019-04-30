@@ -27,7 +27,7 @@ class LoginForm extends Component {
     const { login } = this.props;
     const { name, password } = this.state;
     const user = {
-      name,
+      username: name,
       password,
     };
     login(user);
@@ -56,7 +56,7 @@ class LoginForm extends Component {
             <FormInput
               onChange={this.handleChange}
               type="text"
-              placeholder="Name"
+              placeholder="Username"
               name="name"
               value={name}
             />
