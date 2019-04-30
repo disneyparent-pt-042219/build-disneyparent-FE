@@ -10,6 +10,7 @@ export const login = user => (dispatch) => {
   return axios
     .post('/', user)
     .then((res) => {
+      localStorage.setItem('token', res.data.token);
       dispatch({ type: LOGGED_IN, payload: res.data });
     })
     .catch((err) => {

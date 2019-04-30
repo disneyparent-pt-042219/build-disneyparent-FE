@@ -33,7 +33,7 @@ class SignUpForm extends Component {
       });
     }
     const user = {
-      name,
+      username: name,
       password,
     };
     createUser(user);
