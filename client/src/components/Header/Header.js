@@ -8,7 +8,7 @@ function Header(props) {
   return (
     <header>
       <nav>
-        <img src="/images/logo.png" alt="logo" />
+        <a href="/home"><img src="/images/logo.png" alt="logo" /></a>
         <Link to="/login">Parks & Tickets</Link>
         <Link to="/login">Places to Stay</Link>
         <Link to="/login">About Us</Link>
