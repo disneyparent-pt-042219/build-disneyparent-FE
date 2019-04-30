@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   isLoggingIn: false,
-  isLogedIn: false,
+  isLoggedIn: false,
   userName: '',
   loginError: '',
   creatingAccount: false,
@@ -28,7 +28,7 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        isLogedIn: true,
+        isLoggedIn: true,
         userName: action.payload.username,
       };
     case LOGGED_IN_ERROR:
