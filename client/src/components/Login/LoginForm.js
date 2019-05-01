@@ -31,24 +31,33 @@ class LoginForm extends Component {
       username: name,
       password,
     };
-    login(user)
-      .then((res) => {
-        if (res.data.status === 401) {
-          this.setState({ error: 'Invalid username or password' });
-        } else {
-          history.push('/home');
-        }
-      })
-      .catch((err) => {
-        if (err.data.status === 500) {
-          this.setState({ error: 'Service is unavilable' });
-        }
-      });
+    login(user).then(() => history.push('/home'));
+    // .then((res) => {
+    //   if (res.status === 401) {
+    //     this.setState({ error: 'Invalid username or password' });
+    //   } else {
+    //     history.push('/home');
+    //   }
+    // })
+    // .catch((err) => {
+    //   if (err.status === 500) {
+    //     this.setState({ error: 'Service is unavilable' });
+    //   }
+    // });
+    this.setState({
+      name: '',
+      password: '',
+      error: '',
+    });
   };
 
   render() {
     const { name, password, error } = this.state;
 
+    let errorMsge = this.props.loginError;
+    if (errorMsge) {
+      errorMsge = 'Invalid username or password';
+    }
     return (
       <>
         <div className="form-container sign-in-container">
@@ -66,7 +75,7 @@ class LoginForm extends Component {
               </Link>
             </div>
             <span>or use your account</span>
-            {error && (
+            {errorMsge && (
               <span
                 style={{
                   backgroundColor: '#F7D7DA',
@@ -108,10 +117,14 @@ LoginForm.propTypes = {
   }).isRequired,
 };
 
+const mapStateToProps = state => ({
+  loginError: state.user.loginError,
+});
+
 export default compose(
   withRouter,
   connect(
-    null,
+    mapStateToProps,
     { login },
   ),
 )(LoginForm);
