@@ -14,7 +14,7 @@ export const LOGOUT = 'LOGOUT';
 export const login = user => (dispatch) => {
   dispatch({ type: IS_LOGGING_IN });
   return axios
-    .post('/', user)
+    .post('http://localhost:9090/login', user)
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       dispatch({ type: LOGGED_IN, payload: res.data });
@@ -28,7 +28,7 @@ export const login = user => (dispatch) => {
 export const createUser = user => (dispatch) => {
   dispatch({ type: CREATING_ACCOUNT });
   return axios
-    .post('/register', user)
+    .post('http://localhost:9090/register', user)
     .then((res) => {
       dispatch({ type: ACCOUNT_CREATED, payload: res.data });
     })
