@@ -19,25 +19,26 @@ class PostForm extends Component {
         }
     }
 
-handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    // const { createNewPost } = this.props
-    const { attraction, time, date, kids, message } = this.state;
-    const newPost {
-        attraction,
-        time,
-        date,
-        kids,
-        message,
+    handleChange = (e) => {
+        this.setState({
+        [e.target.name]: e.target.value,
+        });
     };
-    //createNewPost(newPost);
-  };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        // const { createNewPost } = this.props
+        const { attraction, time, date, kids, message } = this.state;
+        const timestamp = dateNow()
+        const newPost {
+            attraction,
+            time,
+            date,
+            kids,
+            message,
+        };
+        //createNewPost(newPost);
+    };
 
 render() {
     const { attraction, time, date, kids, message } = this.state;
