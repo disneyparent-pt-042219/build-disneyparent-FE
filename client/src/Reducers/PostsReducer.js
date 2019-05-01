@@ -4,6 +4,8 @@ import {
     POST_ERROR,
     CREATE_NEW_POST,
     EDIT_POST,
+    DELETING_POST,
+    DELETED_POST,
   } from '../Actions/PostActions';
 
   const initialState = {
