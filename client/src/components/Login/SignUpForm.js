@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createUser } from '../../Actions/UserActions';
@@ -26,17 +27,29 @@ class SignUpForm extends Component {
   handleSignUp = (e) => {
     e.preventDefault();
     const { password, password2, name } = this.state;
-    const { createUser } = this.props;
+    const { createUser, history } = this.props;
     if (password !== password2) {
       this.setState({
         error: 'Passwords do not match',
       });
     }
     const user = {
-      name,
+      username: name,
       password,
     };
-    createUser(user);
+    createUser(user)
+      .then((res) => {
+        if (res.data.status === 201) {
+          history.push('/home');
+        }
+      })
+      .catch((err) => {
+        if (err.data.status === 500) {
+          this.setState({
+            error: 'Server error, try again later',
+          });
+        }
+      });
   };
 
   render() {
@@ -73,7 +86,7 @@ class SignUpForm extends Component {
           <FormInput
             onChange={this.handleChange}
             type="text"
-            placeholder="Name"
+            placeholder="Username"
             name="name"
             value={name}
           />
@@ -100,9 +113,15 @@ class SignUpForm extends Component {
 
 SignUpForm.propTypes = {
   createUser: PropTypes.func.isRequired,
-}
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
-export default connect(
-  null,
-  { createUser },
+export default compose(
+  withRouter,
+  connect(
+    null,
+    { createUser },
+  ),
 )(SignUpForm);
