@@ -38,7 +38,6 @@ export const createUser = user => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  console.log('logout action');
   localStorage.removeItem('token');
   dispatch({ type: LOGOUT });
 };

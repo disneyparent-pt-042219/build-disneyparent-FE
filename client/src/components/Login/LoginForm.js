@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { login } from '../../Actions/UserActions';
 import { FormButton, FormInput } from '../Elements';
 
@@ -24,17 +25,29 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    const { login } = this.props;
+    const { login, history } = this.props;
     const { name, password } = this.state;
     const user = {
       username: name,
       password,
     };
-    login(user);
+    login(user)
+      .then((res) => {
+        if (res.data.status === 401) {
+          this.setState({ error: 'Invalid username or password' });
+        } else {
+          history.push('/home');
+        }
+      })
+      .catch((err) => {
+        if (err.data.status === 500) {
+          this.setState({ error: 'Service is unavilable' });
+        }
+      });
   };
 
   render() {
-    const { name, password } = this.state;
+    const { name, password, error } = this.state;
 
     return (
       <>
@@ -53,6 +66,17 @@ class LoginForm extends Component {
               </Link>
             </div>
             <span>or use your account</span>
+            {error && (
+              <span
+                style={{
+                  backgroundColor: '#F7D7DA',
+                  padding: 5,
+                  color: '#721B23',
+                }}
+              >
+                {error}
+              </span>
+            )}
             <FormInput
               onChange={this.handleChange}
               type="text"
@@ -79,9 +103,15 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default connect(
-  null,
-  { login },
+export default compose(
+  withRouter,
+  connect(
+    null,
+    { login },
+  ),
 )(LoginForm);
