@@ -2,7 +2,7 @@ import {
     FETCHING_POSTS,
     POSTS,
     FETCH_POSTS_ERROR,
-    CREATE_NEW_POST,
+    CREATING_POST,
     POST_CREATED,
     CREATE_POST_ERROR,
     EDITING_POST,
@@ -84,7 +84,7 @@ import {
           ...state,
           isDeletingPost: true,
         }
-      case POST_DELETING:
+      case POST_DELETED:
         return {
           ...state,
           isDeletingPost: false,
