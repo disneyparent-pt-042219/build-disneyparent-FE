@@ -39,10 +39,10 @@ class LoginForm extends Component {
       username: name,
       password,
     };
-    login(user);
-    if (loginError === 401) {
-      this.setState({ error: 'Invalid username or password' });
-    }
+    login(user).then(() => {
+      history.push('/home');
+    });
+
     this.setState({
       name: '',
       password: '',
