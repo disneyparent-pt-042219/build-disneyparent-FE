@@ -7,8 +7,8 @@ import { login } from '../../Actions/UserActions';
 import { FormButton, FormInput } from '../Elements';
 
 class LoginForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
@@ -25,13 +25,6 @@ class LoginForm extends Component {
 
   // }
 
-  // getDerivedStateFromProps(nextProps) {
-  //   if (nextProps.loginError === 401) {
-  //     this.setState({ error: 'Invalid username or password' });
-  //   }
-  //   this.props.history.push('/home');
-  // }
-
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -46,14 +39,14 @@ class LoginForm extends Component {
       username: name,
       password,
     };
-    login(user).then((res) => {
-      console.log('this is my respons...', res.data);
-    });
+    login(user);
+    if (loginError === 401) {
+      this.setState({ error: 'Invalid username or password' });
+    }
   };
 
   render() {
     const { name, password, error } = this.state;
-
     return (
       <>
         <div className="form-container sign-in-container">
