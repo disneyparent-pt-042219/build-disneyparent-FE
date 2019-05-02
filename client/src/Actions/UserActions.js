@@ -14,10 +14,11 @@ export const LOGOUT = 'LOGOUT';
 export const login = user => (dispatch) => {
   dispatch({ type: IS_LOGGING_IN });
   return axios
-    .post('/', user)
+    .post('http://localhost:9090/auth/login', user)
     .then((res) => {
       localStorage.setItem('token', res.data.token);
-      dispatch({ type: LOGGED_IN, payload: res.data });
+      localStorage.setItem('username', user.username);
+      dispatch({ type: LOGGED_IN, payload: res.data, user });
     })
     .catch((err) => {
       dispatch({ type: LOGGED_IN_ERROR, payload: err });
@@ -28,7 +29,7 @@ export const login = user => (dispatch) => {
 export const createUser = user => (dispatch) => {
   dispatch({ type: CREATING_ACCOUNT });
   return axios
-    .post('/register', user)
+    .post('http://localhost:9090/auth/register', user)
     .then((res) => {
       dispatch({ type: ACCOUNT_CREATED, payload: res.data });
     })
@@ -39,5 +40,6 @@ export const createUser = user => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem('token');
+  localStorage.removeItem('username');
   dispatch({ type: LOGOUT });
 };

@@ -30,13 +30,14 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         isLoggingIn: false,
         isLoggedIn: true,
-        userName: action.payload.username,
+        userName: action.user.username,
       };
     case LOGGED_IN_ERROR:
+      console.log('here is the status ', action.status);
       return {
         ...state,
         isLoggingIn: false,
-        loginError: action.payload,
+        loginError: action.payload.response.status,
       };
     case CREATING_ACCOUNT:
       return {
@@ -48,6 +49,8 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         creatingAccount: false,
         accountCreated: true,
+        isLoggedIn: true,
+        userName: action.user.username,
       };
     case CREATING_ACCOUNT_ERROR:
       return {

@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 650px;
            
         }
 

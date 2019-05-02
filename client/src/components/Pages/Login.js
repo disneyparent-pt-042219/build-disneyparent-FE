@@ -5,9 +5,12 @@ import Overlay from '../Login/Overlay';
 import '../Login/form.css';
 
 export default class Login extends Component {
-  state = {
-    activePanel: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePanel: '',
+    };
+  }
 
   // Determins if the class should be added or removed
   handlePanelTransition = () => {
