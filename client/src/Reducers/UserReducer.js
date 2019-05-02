@@ -37,7 +37,7 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        loginError: action.payload,
+        loginError: action.payload.response.status,
       };
     case CREATING_ACCOUNT:
       return {
