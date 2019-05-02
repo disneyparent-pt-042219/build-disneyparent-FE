@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormButton, FormInput, FormDropdown } from '../Elements';
 
+//import {createNewPost} from 'actions/PostActions'
+
 
 class PostForm extends Component {
     constructor(){
@@ -17,11 +19,26 @@ class PostForm extends Component {
         }
     }
 
-handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
+    handleChange = (e) => {
+        this.setState({
+        [e.target.name]: e.target.value,
+        });
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        // const { createNewPost } = this.props
+        const { attraction, time, date, kids, message } = this.state;
+        const timestamp = dateNow()
+        const newPost {
+            attraction,
+            time,
+            date,
+            kids,
+            message,
+        };
+        //createNewPost(newPost);
+    };
 
 render() {
     const { attraction, time, date, kids, message } = this.state;
@@ -72,6 +89,7 @@ render() {
                         placeholder="Message"
                         value={message}
                         />
+                    <FormButton onClick={this.handleSubmit}>Submit</FormButton>
                 </form>
             </div>
         </>
@@ -81,5 +99,6 @@ render() {
 
 export default connect(
     null,
+    // { createNewPost }
   )(PostForm);
   
