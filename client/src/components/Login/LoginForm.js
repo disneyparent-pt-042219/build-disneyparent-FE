@@ -43,6 +43,11 @@ class LoginForm extends Component {
     if (loginError === 401) {
       this.setState({ error: 'Invalid username or password' });
     }
+    this.setState({
+      name: '',
+      password: '',
+      error: '',
+    });
   };
 
   render() {
