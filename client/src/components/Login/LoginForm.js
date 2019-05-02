@@ -7,8 +7,8 @@ import { login } from '../../Actions/UserActions';
 import { FormButton, FormInput } from '../Elements';
 
 class LoginForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
@@ -16,6 +16,14 @@ class LoginForm extends Component {
       error: '',
     };
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (!nextProps.loginError === 401) {
+  //     this.props.history.push('/home');
+  //   }
+  //   this.setState({ error: 'Invalid username or password' });
+
+  // }
 
   handleChange = (e) => {
     this.setState({
@@ -25,39 +33,20 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    const { login, history } = this.props;
+    const { login, history, loginError } = this.props;
     const { name, password } = this.state;
     const user = {
       username: name,
       password,
     };
-    login(user).then(() => history.push('/home'));
-    // .then((res) => {
-    //   if (res.status === 401) {
-    //     this.setState({ error: 'Invalid username or password' });
-    //   } else {
-    //     history.push('/home');
-    //   }
-    // })
-    // .catch((err) => {
-    //   if (err.status === 500) {
-    //     this.setState({ error: 'Service is unavilable' });
-    //   }
-    // });
-    this.setState({
-      name: '',
-      password: '',
-      error: '',
-    });
+    login(user);
+    if (loginError === 401) {
+      this.setState({ error: 'Invalid username or password' });
+    }
   };
 
   render() {
     const { name, password, error } = this.state;
-
-    let errorMsge = this.props.loginError;
-    if (errorMsge) {
-      errorMsge = 'Invalid username or password';
-    }
     return (
       <>
         <div className="form-container sign-in-container">
@@ -75,7 +64,7 @@ class LoginForm extends Component {
               </Link>
             </div>
             <span>or use your account</span>
-            {errorMsge && (
+            {error && (
               <span
                 style={{
                   backgroundColor: '#F7D7DA',
@@ -112,6 +101,7 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
+  loginError: PropTypes.number.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,

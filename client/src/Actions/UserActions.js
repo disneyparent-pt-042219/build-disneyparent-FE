@@ -21,7 +21,6 @@ export const login = user => (dispatch) => {
       dispatch({ type: LOGGED_IN, payload: res.data, user });
     })
     .catch((err) => {
-      console.log(err.status);
       dispatch({ type: LOGGED_IN_ERROR, payload: err });
     });
 };
