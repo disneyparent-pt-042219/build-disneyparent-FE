@@ -40,7 +40,7 @@ class Header extends Component {
     return (
       <header>
         <nav>
-          <Link to={user ? '/home' : '/login'}>
+          <Link to={user ? '/home' : '/'}>
             <img src="/images/logo.png" alt="logo" />
           </Link>
           <Link to="/login">Parks & Tickets</Link>
@@ -57,7 +57,7 @@ class Header extends Component {
               {`Welcome ${user}`}
               <i className="fas fa-user-circle" />
             </p>
-            <Link to="/login">
+            <Link to="/">
               <FormButton onClick={this.loggingOut}>Log Out</FormButton>
             </Link>
           </div>

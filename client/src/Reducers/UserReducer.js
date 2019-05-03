@@ -33,10 +33,14 @@ const UserReducer = (state = initialState, action) => {
         userName: action.user.username,
       };
     case LOGGED_IN_ERROR:
+      let error = action.payload.response.status;
+      if (error === 401) {
+        error = 'Invalid username or password';
+      }
       return {
         ...state,
         isLoggingIn: false,
-        loginError: action.payload.response.status,
+        loginError: error,
       };
     case CREATING_ACCOUNT:
       return {

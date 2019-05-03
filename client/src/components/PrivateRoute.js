@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         return <Component />;
       }
       console.log('redirecting!!!!');
-      return <Redirect to="/login" />;
+      return <Redirect to="/" />;
     }}
   />
 );
