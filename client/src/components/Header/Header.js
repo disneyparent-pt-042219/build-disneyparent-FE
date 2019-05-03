@@ -43,10 +43,10 @@ class Header extends Component {
           <Link to={user ? '/home' : '/'}>
             <img src="/images/logo.png" alt="logo" />
           </Link>
-          <Link to="/login">Parks & Tickets</Link>
-          <Link to="/login">Places to Stay</Link>
-          <Link to="/login">About Us</Link>
-          <Link to="/login">Contact</Link>
+          <Link to="/">Parks & Tickets</Link>
+          <Link to="/">Places to Stay</Link>
+          <Link to="/">About Us</Link>
+          <Link to="/">Contact</Link>
         </nav>
         {/* if user is logged in, display logout menu */}
         {user && (
