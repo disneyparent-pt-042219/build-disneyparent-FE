@@ -33,7 +33,6 @@ const UserReducer = (state = initialState, action) => {
         userName: action.user.username,
       };
     case LOGGED_IN_ERROR:
-      console.log('here is the status ', action.status);
       return {
         ...state,
         isLoggingIn: false,
