@@ -13,7 +13,6 @@ class LoginForm extends Component {
     this.state = {
       name: '',
       password: '',
-      error: '',
     };
   }
 
@@ -38,13 +37,12 @@ class LoginForm extends Component {
     this.setState({
       name: '',
       password: '',
-      
     });
   };
 
   render() {
-    const { name, password  } = this.state;
-    const {loginError} =this.props;
+    const { name, password } = this.state;
+    const { loginError } = this.props;
     return (
       <>
         <div className="form-container sign-in-container">
