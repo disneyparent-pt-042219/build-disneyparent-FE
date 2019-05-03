@@ -1,9 +1,10 @@
 import React from 'react';
+import Container from '../Elements/Container';
 
 export default function Home() {
   return (
-    <div>
-      <h1>Welcome to the homepage</h1>
-    </div>
+    <Container>
+      <h1>My Post</h1>
+    </Container>
   );
 }

@@ -13,17 +13,8 @@ class LoginForm extends Component {
     this.state = {
       name: '',
       password: '',
-      error: '',
     };
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (!nextProps.loginError === 401) {
-  //     this.props.history.push('/home');
-  //   }
-  //   this.setState({ error: 'Invalid username or password' });
-
-  // }
 
   handleChange = (e) => {
     this.setState({
@@ -33,7 +24,7 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    const { login, history, loginError } = this.props;
+    const { login, history } = this.props;
     const { name, password } = this.state;
     const user = {
       username: name,
@@ -46,12 +37,12 @@ class LoginForm extends Component {
     this.setState({
       name: '',
       password: '',
-      error: '',
     });
   };
 
   render() {
-    const { name, password, error } = this.state;
+    const { name, password } = this.state;
+    const { loginError } = this.props;
     return (
       <>
         <div className="form-container sign-in-container">
@@ -69,7 +60,7 @@ class LoginForm extends Component {
               </Link>
             </div>
             <span>or use your account</span>
-            {error && (
+            {loginError && (
               <span
                 style={{
                   backgroundColor: '#F7D7DA',
@@ -77,7 +68,7 @@ class LoginForm extends Component {
                   color: '#721B23',
                 }}
               >
-                {error}
+                {loginError}
               </span>
             )}
             <FormInput
@@ -106,7 +97,7 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
-  loginError: PropTypes.number.isRequired,
+  loginError: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
