@@ -67,11 +67,11 @@ import {
         return {
           ...state,
           isEditingPost: false,
-          posts: this.state.posts.map(post => {
+          posts: this.state.posts.map(post =>
             post.id === action.payload.id
               ? { ...action.payload }
               : post
-          })
+          )
         }
       case EDIT_POST_ERROR:
         return {
@@ -88,9 +88,9 @@ import {
         return {
           ...state,
           isDeletingPost: false,
-          posts: this.state.posts.filter(post => {
+          posts: this.state.posts.filter(post => 
             post.id !== action.payload.id
-          })
+          )
         }
       case DELETE_POST_ERROR:
         return {

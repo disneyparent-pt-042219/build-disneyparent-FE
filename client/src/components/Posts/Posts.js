@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostCard from '../Elements/PostCard';
 
-//import { getPosts } from 'actions/PostActions';
+
+import { getPosts } from 'actions/PostActions';
 
 
-//todo convert this into map over PostCards in elements.
 class Posts extends Component {
     constructor(){
         super()
@@ -13,12 +13,12 @@ class Posts extends Component {
 
 
     componentDidMount(){
-        //getPosts()
+        getPosts()
     }
 
     render(){
         return (
-
+    
             {this.props.posts.filter().map((post, index) => (
                 <div class="post-card" key={index}>
                    <PostCard post={post} />
@@ -27,9 +27,12 @@ class Posts extends Component {
 
         );
     }
+};
 
 const mapStateToProps = state => {
     return {
         posts: state.posts
     }
 };
+
+export default connect(mapStateToProps, { getPosts } )(Posts)
