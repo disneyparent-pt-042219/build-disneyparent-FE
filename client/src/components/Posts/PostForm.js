@@ -46,7 +46,7 @@ class PostForm extends Component {
 
     return (
       <>
-        <div className="form-container">
+        <div>
           <form>
             <h1>New Post</h1>
 
