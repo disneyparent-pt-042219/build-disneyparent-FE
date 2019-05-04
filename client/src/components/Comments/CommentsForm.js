@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { postComment } from '../../Actions/CommentsActions';
 import { FormTextArea } from '../Elements/FormInput';
+import { FormButton } from '../Elements/FormButton';
 
-export default class CommentsForm extends Component {
+class CommentsForm extends Component {
   constructor() {
     super();
     this.state = {
-      comment: '',
+      text: '',
     };
   }
 
@@ -17,24 +22,43 @@ export default class CommentsForm extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const { comment } = this.state;
+    const { text } = this.state;
+    const { match, postComment } = this.props;
+    const id = parseInt(match.params.id);
+    // const id = parseInt(urlId);
+    const user = localStorage.getItem('username');
+
     const comment = {
-      comment,
+      comment: text,
+      username: user,
+      post_id: id,
     };
+    postComment(comment);
+    this.setState({ text: '' });
   };
 
   render() {
-    const { comment } = this.state;
+    const { text } = this.state;
     return (
-      <form>
+      <form onSubmit={this.submitHandler}>
         <FormTextArea
           placeholder="Enter reply..."
-          name="comment"
-          value={comment}
+          name="text"
+          value={text}
           onChange={this.changeHandler}
         />
-        <button type="submit">Reply</button>
+        <FormButton onClick={this.submitHandler} type="submit">
+          Reply
+        </FormButton>
       </form>
     );
   }
 }
+
+export default compose(
+  withRouter,
+  connect(
+    null,
+    { postComment },
+  ),
+)(CommentsForm);

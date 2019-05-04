@@ -20,6 +20,7 @@ export const DELETING_COMMENT = 'DELETING_COMMENT';
 export const DELETED_COMMENT = 'DELETED_COMMENT';
 export const DELETED_COMMENT_ERROR = 'DELETED_COMMENT_ERROR';
 
+// Todo update get URL once backend is complete
 export const getComments = postId => (dispatch) => {
   dispatch({ type: FETCHING_COMMENTS });
   axios
@@ -34,6 +35,7 @@ export const getComments = postId => (dispatch) => {
     });
 };
 
+// Todo update get URL once backend is complete
 export const postComment = postId => (dispatch) => {
   dispatch({ type: ADDING_COMMENT });
   return axios
@@ -48,6 +50,7 @@ export const postComment = postId => (dispatch) => {
     });
 };
 
+// Todo update get URL once backend is complete
 export const editComment = commentId => (dispatch) => {
   dispatch({ type: EDITING_COMMENT });
   return axios
@@ -62,6 +65,7 @@ export const editComment = commentId => (dispatch) => {
     });
 };
 
+// Todo update get URL once backend is complete
 export const deleteComment = commentId => (dispatch) => {
   dispatch({ type: DELETING_COMMENT });
   axios
