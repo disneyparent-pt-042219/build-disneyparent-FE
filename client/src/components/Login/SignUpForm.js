@@ -44,7 +44,7 @@ class SignUpForm extends Component {
       password2: '',
       error: '',
     });
-    history.push('/login');
+    history.push('/');
   };
 
   render() {
