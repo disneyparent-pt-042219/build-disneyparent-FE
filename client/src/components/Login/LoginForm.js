@@ -7,13 +7,12 @@ import { login } from '../../Actions/UserActions';
 import { FormButton, FormInput } from '../Elements';
 
 class LoginForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
       password: '',
-      error: '',
     };
   }
 
@@ -31,24 +30,19 @@ class LoginForm extends Component {
       username: name,
       password,
     };
-    login(user)
-      .then((res) => {
-        if (res.data.status === 401) {
-          this.setState({ error: 'Invalid username or password' });
-        } else {
-          history.push('/home');
-        }
-      })
-      .catch((err) => {
-        if (err.data.status === 500) {
-          this.setState({ error: 'Service is unavilable' });
-        }
-      });
+    login(user).then(() => {
+      history.push('/home');
+    });
+
+    this.setState({
+      name: '',
+      password: '',
+    });
   };
 
   render() {
-    const { name, password, error } = this.state;
-
+    const { name, password } = this.state;
+    const { loginError } = this.props;
     return (
       <>
         <div className="form-container sign-in-container">
@@ -66,7 +60,7 @@ class LoginForm extends Component {
               </Link>
             </div>
             <span>or use your account</span>
-            {error && (
+            {loginError && (
               <span
                 style={{
                   backgroundColor: '#F7D7DA',
@@ -74,7 +68,7 @@ class LoginForm extends Component {
                   color: '#721B23',
                 }}
               >
-                {error}
+                {loginError}
               </span>
             )}
             <FormInput
@@ -103,15 +97,20 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
+  loginError: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
+const mapStateToProps = state => ({
+  loginError: state.user.loginError,
+});
+
 export default compose(
   withRouter,
   connect(
-    null,
+    mapStateToProps,
     { login },
   ),
 )(LoginForm);

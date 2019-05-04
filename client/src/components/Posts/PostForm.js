@@ -7,38 +7,39 @@ import { createPost } from '../../Actions/PostActions';
 
 
 class PostForm extends Component {
-    constructor(){
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            attraction: 'space',
-            time: '07:30:00',
-            date: '2019-03-22',
-            kids: '0',
-            message: '...',
-        }
+    this.state = {
+      attraction: 'space',
+      time: '07:30:00',
+      date: '2019-03-22',
+      kids: '0',
+      message: '...',
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    };
+  }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        const { createPost } = this.props
-        const { attraction, time, date, kids, message } = this.state;
-        const timestamp = Date.now()
-        const newPost = {
-            attraction,
-            time,
-            date,
-            kids,
-            message,
-            timestamp,
-        };
-        createPost(newPost);
+  handleChange = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit = (e) => {
+      e.preventDefault();
+      const { createPost } = this.props
+      const { attraction, time, date, kids, message } = this.state;
+      const timestamp = Date.now()
+      const newPost = {
+          attraction,
+          time,
+          date,
+          kids,
+          message,
+          timestamp,
+      };
+      createPost(newPost);
     };
 
     render() {
@@ -46,7 +47,7 @@ class PostForm extends Component {
 
         return (
             <>
-                <div className="form-container">
+                <div>
                     <form>
                         <h1>New Post</h1>
                         {/* add cancel button */}

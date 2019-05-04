@@ -29,7 +29,7 @@ class SignUpForm extends Component {
     const { password, password2, name } = this.state;
     const { createUser, history } = this.props;
     if (password !== password2) {
-      this.setState({
+      return this.setState({
         error: 'Passwords do not match',
       });
     }
@@ -37,19 +37,14 @@ class SignUpForm extends Component {
       username: name,
       password,
     };
-    createUser(user)
-      .then((res) => {
-        if (res.data.status === 201) {
-          history.push('/home');
-        }
-      })
-      .catch((err) => {
-        if (err.data.status === 500) {
-          this.setState({
-            error: 'Server error, try again later',
-          });
-        }
-      });
+    createUser(user);
+    this.setState({
+      name: '',
+      password: '',
+      password2: '',
+      error: '',
+    });
+    history.push('/');
   };
 
   render() {
