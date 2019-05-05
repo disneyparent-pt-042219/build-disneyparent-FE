@@ -1,29 +1,30 @@
 import React from 'react';
+import { PostCardDiv, PostCardBody, PostCardLabels, PostCardInformation, PostCardSingleLabel } from '../Elements/PostCard';
 
 function PostCard(props){
 
     return (
-        <div>
-        <div className="post-header">
-            <span><i className="fas fa-user-circle" /> Posted by {props.post.username} {props.post.timestamp}</span>
-                {/* add edit and delete post icons */}
-        </div>
-        <div className="post-body">
-            <div className="post-labels">
-                <span>Attraction:</span>
-                <span>Time:</span>
-                <span>No. of Kids:</span>
+        <PostCardDiv>
+            <div className="post-header">
+                <span><i className="fas fa-user-circle" /> Posted by {props.post.username} Filler Username {props.post.timestamp}</span>
+                    {/* add edit and delete post icons */}
             </div>
-            <div className="post-information">
-                <span> {props.post.attraction} </span>
-                <span> {props.post.meetup_date} {props.post.meetup_time}</span>
-                <span> {props.post.num_of_children} </span>
-            </div>
-            <div className="post-comment">
+            <PostCardBody>
+                <PostCardLabels>
+                    <PostCardSingleLabel>Attraction:</PostCardSingleLabel>
+                    <PostCardSingleLabel>Time:</PostCardSingleLabel>
+                    <PostCardSingleLabel>No. of Kids:</PostCardSingleLabel>
+                </PostCardLabels>
+                <PostCardInformation>
+                    <PostCardSingleLabel> {props.post.attraction} </PostCardSingleLabel>
+                    <PostCardSingleLabel> {props.post.meetup_date} {props.post.meetup_time}</PostCardSingleLabel>
+                    <PostCardSingleLabel> {props.post.num_of_children} </PostCardSingleLabel>
+                </PostCardInformation>
+                <div className="post-comment">
 
-            </div>
-        </div>
-        </div>
+                </div>
+            </PostCardBody>
+        </PostCardDiv>
     )
 }
 

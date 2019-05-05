@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostCard from './PostCard';
+import { PostCardsContainer } from '../Elements/PostCard';
 
 
 import { getPosts } from '../../Actions/PostActions';
@@ -21,13 +22,13 @@ class Posts extends Component {
         const { posts } = this.props;
         console.log(posts)
         return (
-            <div>
+            <PostCardsContainer>
                 {posts.map((post, index) => (
                     <div className="post-card" key={post.id}>
                         <PostCard post={post} />
                     </div>
                 ))}
-            </div>
+            </PostCardsContainer>
         );
     }
 };
