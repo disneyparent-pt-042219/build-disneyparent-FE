@@ -13,8 +13,8 @@ function PostCard(props) {
   const postPage = `post/${props.index}`;
   const time = props.post.meetup_date.concat(' ', props.post.meetup_time);
   const meetDate = moment(time).format('MMMM Do YYYY, h:mm:ss a');
-  const postTime = moment(props.post.created_at)
-    .startOf('hour')
+  const postTime = moment.parseZone(props.post.created_at)
+    .startOf('day,hour')
     .fromNow();
   // props.post.meetup_date props.post.meetup_time
   return (
