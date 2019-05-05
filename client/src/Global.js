@@ -53,6 +53,11 @@ const GlobalStyle = createGlobalStyle`
         }
         
     }
+
+    .active {
+        color: #ff4b2b;
+        
+    }
 `;
 
 export default GlobalStyle;
