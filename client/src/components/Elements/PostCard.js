@@ -1,29 +1,48 @@
-import React from 'react';
+import styled from 'styled-components';
 
-function PostCard(props){
+export const PostCardsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 700px;
+    padding: 25px;
+`;
 
-    return (
+export const PostCardDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 15px;
+    border: 1px solid black;
+    margin: 5px;
+`;
 
-        <div className="post-header">
-            <span><i className="fas fa-user-circle" /> Posted by {post.username} {post.timestamp}</span>
-                {/* add edit and delete post icons */}
-        </div>
-        <div className="post-body">
-            <div className="post-labels">
-                <span>Attraction:</span>
-                <span>Time:</span>
-                <span>No. of Kids:</span>
-            </div>
-            <div className="post-information">
-                <span> {post.attraction} </span>
-                <span> {post.date} {post.time}</span>
-                <span> {post.kids} </span>
-            </div>
-            <div className="post-comment">
+export const PostCardBody = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`;
 
-            </div>
-        </div>
-    )
-}
+export const PostCardLabels = styled.div`
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-weight: bold;
+    padding: 10px 0;
+`;
 
-export default PostCard;
+export const PostCardSingleLabel = styled.span`
+    font-size: 18px;
+    padding: 10px 0;
+`;
+
+export const PostCardInformation = styled.div`
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    font-weight: bold;
+    padding: 10px 0 10px 15px;
+`;

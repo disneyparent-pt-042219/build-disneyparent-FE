@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    const { login, history } = this.props;
+    const { history } = this.props;
     const { name, password } = this.state;
     const user = {
       username: name,
