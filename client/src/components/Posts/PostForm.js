@@ -12,11 +12,11 @@ class PostForm extends Component {
     super();
 
     this.state = {
-      attraction: 'space',
-      meetup_time: '07:30:00',
-      meetup_date: '2019-03-22',
+      attraction: '',
+      meetup_time: '',
+      meetup_date: '',
       num_of_children: '0',
-      message: '...',
+      message: '',
     };
   }
 
@@ -74,10 +74,11 @@ class PostForm extends Component {
               name="attraction"
               value={attraction}
             >
-              <option value="space">Space Mountain</option>
-              <option value="magic">Magic Kingdom</option>
-              <option value="hollywood">Hollywood Studios</option>
-              <option value="animal">Animal Kingdom</option>
+              <option value="">Select...</option>
+              <option value="Space Mountain">Space Mountain</option>
+              <option value="Magic Kingdom">Magic Kingdom</option>
+              <option value="Hollywood Studios">Hollywood Studios</option>
+              <option value="Animal Kingdom">Animal Kingdom</option>
             </FormDropdown>
             <span>Time</span>
             <FormInput
