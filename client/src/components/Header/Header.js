@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { FormButton } from '../Elements/FormButton';
@@ -51,8 +51,8 @@ class Header extends Component {
         {/* if user is logged in, display logout menu */}
         {user && (
           <div className="right-nav">
-            <Link to="/attractions">Attractions</Link>
-            <Link to="/posts">Posts</Link>
+            <NavLink to="/attractions">Attractions</NavLink>
+            <NavLink to="/posts">Posts</NavLink>
             <p>
               {`Welcome ${user}`}
               <i className="fas fa-user-circle" />
