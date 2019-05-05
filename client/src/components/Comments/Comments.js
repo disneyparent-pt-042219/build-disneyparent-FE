@@ -5,7 +5,6 @@ import { getComments } from '../../Actions/CommentsActions';
 import Comment from './Comment';
 
 class Comments extends Component {
-  
   componentDidMount() {
     const { getComments } = this.props;
     getComments();
