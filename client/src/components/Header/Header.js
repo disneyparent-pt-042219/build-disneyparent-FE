@@ -51,7 +51,6 @@ class Header extends Component {
         {/* if user is logged in, display logout menu */}
         {user && (
           <div className="right-nav">
-            <NavLink to="/attractions">Attractions</NavLink>
             <NavLink to="/allposts">All Posts</NavLink>
             <p>
               {`Welcome ${user}`}
