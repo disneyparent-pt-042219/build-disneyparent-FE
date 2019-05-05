@@ -8,7 +8,9 @@ export default class SinglePost extends Component {
   render() {
     return (
       <Container>
+      
         <CommentsForm />
+        
       </Container>
     )
   }
