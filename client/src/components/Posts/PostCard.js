@@ -3,9 +3,9 @@ import React from 'react';
 function PostCard(props){
 
     return (
-
+        <div>
         <div className="post-header">
-            <span><i className="fas fa-user-circle" /> Posted by {post.username} {post.timestamp}</span>
+            <span><i className="fas fa-user-circle" /> Posted by {props.post.username} {props.post.timestamp}</span>
                 {/* add edit and delete post icons */}
         </div>
         <div className="post-body">
@@ -15,13 +15,14 @@ function PostCard(props){
                 <span>No. of Kids:</span>
             </div>
             <div className="post-information">
-                <span> {post.attraction} </span>
-                <span> {post.date} {post.time}</span>
-                <span> {post.kids} </span>
+                <span> {props.post.attraction} </span>
+                <span> {props.post.meetup_date} {props.post.meetup_time}</span>
+                <span> {props.post.num_of_children} </span>
             </div>
             <div className="post-comment">
 
             </div>
+        </div>
         </div>
     )
 }
