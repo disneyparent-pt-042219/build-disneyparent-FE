@@ -12,11 +12,15 @@ export const LOGOUT = 'LOGOUT';
 
 const api = 'https://disney-parent-buildwk-42219.herokuapp.com';
 
+// `${api}/login`
+// `${api}/register`
+
+
 // TODO Need to verify post url
 export const login = user => (dispatch) => {
   dispatch({ type: IS_LOGGING_IN });
   return axios
-    .post(`${api}/login`, user)
+    .post('http://localhost:9090/login', user)
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', user.username);
@@ -31,7 +35,7 @@ export const login = user => (dispatch) => {
 export const createUser = user => (dispatch) => {
   dispatch({ type: CREATING_ACCOUNT });
   return axios
-    .post(`${api}/register`, user)
+    .post('http://localhost:9090/register', user)
     .then((res) => {
       dispatch({ type: ACCOUNT_CREATED, payload: res.data });
     })
