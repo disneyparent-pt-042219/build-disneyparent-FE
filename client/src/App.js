@@ -14,9 +14,9 @@ function App() {
     <div className="App">
       <Header />
       <Route exact path="/" component={Login} />
-      <PrivateRoute exact path="/home" component={Home} />
-      <PrivateRoute exact path="/post/:id" component={SinglePost} />
-      <PrivateRoute exact path="/newpost" component={PostForm} />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/post/:id" component={SinglePost} />
+      <Route exact path="/newpost" component={PostForm} />
       <GlobalStyle />
     </div>
   );

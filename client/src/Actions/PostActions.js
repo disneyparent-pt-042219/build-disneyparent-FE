@@ -23,7 +23,9 @@ export const DELETE_POST_ERROR = 'DELETE_POST_ERROR';
 export const getPosts = () => (dispatch) => {
   dispatch({ type: FETCHING_POSTS });
   axios
-    .get('/posts', { headers: { token: localStorage.getItem('token') } })
+    .get('http://localhost:9090/posts', { 
+      headers: { token: localStorage.getItem('token') }
+    })
     .then((res) => {
       dispatch({ type: POSTS, payload: res.data });
     })
@@ -35,7 +37,7 @@ export const getPosts = () => (dispatch) => {
 export const createPost = newPost => (dispatch) => {
   dispatch({ type: CREATING_POST });
   return axios
-    .post('/newPost', newPost, {
+    .post('http://localhost:9090/posts', newPost, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {
