@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Posts from '../Posts/Posts';
-import PostForm from '../Posts/PostForm';
+import MyPosts from '../Posts/MyPosts';
 import Container from '../Elements/Container';
 import { FormButton } from '../Elements';
 
 export default function Home() {
   return (
     <Container>
-      <h1>Posts</h1>
+      <h1>My Posts</h1>
       <Link to="/newpost">
         <FormButton>Add Post</FormButton>
       </Link>
-      <Posts />
+      <MyPosts />
     </Container>
   );
 }
