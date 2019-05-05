@@ -23,8 +23,9 @@ function PostCard(props) {
         <div className="post-header">
           <span>
             <i className="fas fa-user-circle" />
-            Posted by
-            {props.post.family_id}
+            {' '}
+            Posted by {' '}
+            {props.post.family_id} {' '}
             {postTime}
           </span>
           {/* add edit and delete post icons */}
