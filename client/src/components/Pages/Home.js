@@ -9,7 +9,9 @@ export default function Home() {
   return (
     <Container>
       <h1>Posts</h1>
-      <FormButton><Link to="/newpost">Add Post</Link></FormButton>
+      <Link to="/newpost">
+        <FormButton>Add Post</FormButton>
+      </Link>
       <Posts />
     </Container>
   );
