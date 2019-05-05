@@ -52,7 +52,7 @@ class Header extends Component {
         {user && (
           <div className="right-nav">
             <NavLink to="/attractions">Attractions</NavLink>
-            <NavLink to="/posts">Posts</NavLink>
+            <NavLink to="/allposts">All Posts</NavLink>
             <p>
               {`Welcome ${user}`}
               <i className="fas fa-user-circle" />
