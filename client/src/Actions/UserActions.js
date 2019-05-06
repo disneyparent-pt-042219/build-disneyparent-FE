@@ -20,7 +20,7 @@ const api = 'https://disney-parent-buildwk-42219.herokuapp.com';
 export const login = user => (dispatch) => {
   dispatch({ type: IS_LOGGING_IN });
   return axios
-    .post('http://localhost:9090/login', user)
+    .post('https://disney-parent-buildwk-42219.herokuapp.com/auth/login', user)
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', user.username);
@@ -35,7 +35,7 @@ export const login = user => (dispatch) => {
 export const createUser = user => (dispatch) => {
   dispatch({ type: CREATING_ACCOUNT });
   return axios
-    .post('http://localhost:9090/register', user)
+    .post('https://disney-parent-buildwk-42219.herokuapp.com/auth/register', user)
     .then((res) => {
       dispatch({ type: ACCOUNT_CREATED, payload: res.data });
     })

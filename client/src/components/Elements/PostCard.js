@@ -5,7 +5,7 @@ export const PostCardsContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     width: 1000px;
-
+    padding-left: 25px;
 `;
 
 export const PostCardDiv = styled.div`
