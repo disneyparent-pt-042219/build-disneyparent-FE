@@ -7,6 +7,8 @@ import {
   PostCardLabels,
   PostCardInformation,
   PostCardSingleLabel,
+  PostCardHeader,
+  PostCardDelete
 } from '../Elements/PostCard';
 
 function PostCard(props) {
@@ -16,20 +18,25 @@ function PostCard(props) {
   const postTime = moment.parseZone(props.post.created_at)
     .startOf('day,hour')
     .fromNow();
+    console.log(props)
   // props.post.meetup_date props.post.meetup_time
   return (
-    <Link to={postPage}>
+
+    <Link to={postPage} >
       <PostCardDiv>
-        <div className="post-header">
-          <span>
-            <i className="fas fa-user-circle" />
-            {' '}
-            Posted by {' '}
-            {props.post.family_id} {' '}
-            {postTime}
-          </span>
-          {/* add edit and delete post icons */}
-        </div>
+        <PostCardHeader>
+            <div>
+              <i className="fas fa-user-circle" />
+              {' '}
+              Posted by {' '}
+              {props.post.family_id} {' '}
+              {postTime}
+            </div>
+           {props.deleteFunction && 
+              <PostCardDelete onClick={props.deleteFunction(props.post.id)}> 
+                  <i className="fas fa-trash-alt" /> 
+              </PostCardDelete> }
+        </PostCardHeader>
         <PostCardBody>
           <PostCardLabels>
             <PostCardSingleLabel>Attraction:</PostCardSingleLabel>
@@ -43,9 +50,12 @@ function PostCard(props) {
               {props.post.num_of_children}
             </PostCardSingleLabel>
           </PostCardInformation>
-          <div className="post-comment" />
         </PostCardBody>
+        <div className="post-comment">
+            
+          </div>
       </PostCardDiv>
+
     </Link>
   );
 }

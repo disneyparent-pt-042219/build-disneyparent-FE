@@ -25,7 +25,7 @@ class Posts extends Component {
             <PostCardsContainer>
                 {posts.map((post, index) => (
                     <div className="post-card" key={post.id}>
-                        <PostCard post={post} index={index}/>
+                        <PostCard post={post} index={index} />
                     </div>
                 ))}
             </PostCardsContainer>

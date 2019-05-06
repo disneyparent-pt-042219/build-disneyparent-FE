@@ -11,12 +11,17 @@ import {
   DELETING_POST,
   POST_DELETED,
   DELETE_POST_ERROR,
+  FETCHING_SINGLE,
+  SINGLE_FETCHED,
+  FETCH_SINGLE_ERROR,
 } from '../Actions/PostActions';
 
 const initialState = {
   posts: [],
+  singlePost: {},
   postError: '',
   isFetchingPost: false,
+  isFetchingSingle: false,
   isCreatingPost: false,
   isEditingPost: false,
   isDeletingPost: false,
@@ -90,6 +95,23 @@ const PostsReducer = (state = initialState, action) => {
       return {
         ...state,
         isDeletingPost: false,
+        postError: action.payload,
+      };
+    case FETCHING_SINGLE:
+      return {
+        ...state,
+        isFetchingSingle: true,
+      };
+    case  SINGLE_FETCHED:
+      return {
+        ...state,
+        isFetchingSingle: false,
+        singlePost: action.payload,
+      };
+    case FETCH_SINGLE_ERROR:
+      return {
+        ...state,
+        isFetchingSingle: false,
         postError: action.payload,
       };
     default:
