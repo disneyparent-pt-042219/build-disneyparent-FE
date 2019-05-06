@@ -28,7 +28,7 @@ export const FETCH_SINGLE_ERROR = 'FETCH_SINGLE_ERROR';
 export const getPosts = () => (dispatch) => {
   dispatch({ type: FETCHING_POSTS });
   axios
-    .get('http://localhost:9090/posts', { 
+    .get('https://disney-parent-buildwk-42219.herokuapp.com/posts', { 
       headers: { token: localStorage.getItem('token') }
     })
     .then((res) => {
@@ -42,7 +42,7 @@ export const getPosts = () => (dispatch) => {
 export const createPost = newPost => (dispatch) => {
   dispatch({ type: CREATING_POST });
   return axios
-    .post('http://localhost:9090/posts', newPost, {
+    .post('https://disney-parent-buildwk-42219.herokuapp.com/posts', newPost, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {
@@ -70,7 +70,7 @@ export const editPost = post => (dispatch) => {
 export const deletePost = postID => (dispatch) => {
   dispatch({ type: DELETING_POST });
   return axios
-    .delete('http://localhost:9090/posts/' + postID, {
+    .delete('https://disney-parent-buildwk-42219.herokuapp.com/posts/' + postID, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {
@@ -84,7 +84,7 @@ export const deletePost = postID => (dispatch) => {
 export const getSinglePost = postID => (dispatch) => {
   dispatch({ type: FETCHING_SINGLE })
   return axios
-    .get('http://localhost:9090/posts/' + postID, {
+    .get('https://disney-parent-buildwk-42219.herokuapp.com/posts/' + postID, {
       headers: { token: localStorage.getItem('token') }
     })
     .then((res) => {

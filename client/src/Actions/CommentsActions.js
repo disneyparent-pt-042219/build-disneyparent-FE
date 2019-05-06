@@ -24,7 +24,7 @@ export const DELETED_COMMENT_ERROR = 'DELETED_COMMENT_ERROR';
 export const getComments = postId => (dispatch) => {
   dispatch({ type: FETCHING_COMMENTS });
   axios
-    .get(`/posts/${postId}`, {
+    .get(`https://disney-parent-buildwk-42219.herokuapp.com/comments/${postId}`, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {
@@ -39,7 +39,7 @@ export const getComments = postId => (dispatch) => {
 export const postComment = postId => (dispatch) => {
   dispatch({ type: ADDING_COMMENT });
   return axios
-    .post(`/addcomment/${postId}`, {
+    .post(`https://disney-parent-buildwk-42219.herokuapp.com/comments/${postId}`, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {
@@ -54,7 +54,7 @@ export const postComment = postId => (dispatch) => {
 export const editComment = commentId => (dispatch) => {
   dispatch({ type: EDITING_COMMENT });
   return axios
-    .put(`/comments/${commentId}`, {
+    .put(`https://disney-parent-buildwk-42219.herokuapp.com/comments/${commentId}`, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {
@@ -69,7 +69,7 @@ export const editComment = commentId => (dispatch) => {
 export const deleteComment = commentId => (dispatch) => {
   dispatch({ type: DELETING_COMMENT });
   axios
-    .delete(`/comments/${commentId}`)
+    .delete(`https://disney-parent-buildwk-42219.herokuapp.com/comments/${commentId}`)
     .then((res) => {
       dispatch({ type: DELETED_COMMENT, payload: res.data });
     })
