@@ -46,10 +46,10 @@ function PostCard(props) {
               {props.post.num_of_children}
             </PostCardSingleLabel>
           </PostCardInformation>
-          <div className="post-comment">
+        </PostCardBody>
+        <div className="post-comment">
             {props.deleteFunction && <FormButton onClick={props.deleteFunction(props.post.id)}>X</FormButton>}
           </div>
-        </PostCardBody>
       </PostCardDiv>
 
     </Link>
