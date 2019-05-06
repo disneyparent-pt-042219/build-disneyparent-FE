@@ -12,8 +12,8 @@ export const LOGOUT = 'LOGOUT';
 
 const api = 'https://disney-parent-buildwk-42219.herokuapp.com';
 
-// `${api}/auth/login`
-// `${api}/auth/register`
+// `${api}/login`
+// `${api}/register`
 
 
 // TODO Need to verify post url
