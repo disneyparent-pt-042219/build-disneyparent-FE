@@ -70,7 +70,7 @@ export const editPost = post => (dispatch) => {
 export const deletePost = postID => (dispatch) => {
   dispatch({ type: DELETING_POST });
   return axios
-    .post('/deletePost', postID, {
+    .delete('http://localhost:9090/posts/' + postID, {
       headers: { token: localStorage.getItem('token') },
     })
     .then((res) => {

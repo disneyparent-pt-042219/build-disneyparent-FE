@@ -17,8 +17,10 @@ function PostCard(props) {
   const postTime = moment.parseZone(props.post.created_at)
     .startOf('day,hour')
     .fromNow();
+    console.log(props)
   // props.post.meetup_date props.post.meetup_time
   return (
+
     <Link to={postPage} >
       <PostCardDiv>
         <div className="post-header">
@@ -44,6 +46,9 @@ function PostCard(props) {
               {props.post.num_of_children}
             </PostCardSingleLabel>
           </PostCardInformation>
+          <div className="post-comment">
+            {props.deleteFunction && <FormButton onClick={props.deleteFunction(props.post.id)}>X</FormButton>}
+          </div>
         </PostCardBody>
       </PostCardDiv>
 
