@@ -22,6 +22,19 @@ export const PostCardDiv = styled.div`
     border-radius: 4px;
 `;
 
+export const PostCardHeader = styled.div`
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+`;
+
+export const PostCardDelete = styled.span`
+    font-weight: bold;
+    font-size: 24px;
+`;
+
 export const PostCardBody = styled.div`
     display: flex;
     flex-direction: row;

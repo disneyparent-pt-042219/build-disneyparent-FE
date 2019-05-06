@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { FormButton } from '../Elements';
 import {
   PostCardDiv,
   PostCardBody,
   PostCardLabels,
   PostCardInformation,
   PostCardSingleLabel,
+  PostCardHeader,
+  PostCardDelete
 } from '../Elements/PostCard';
 
 function PostCard(props) {
@@ -23,16 +24,19 @@ function PostCard(props) {
 
     <Link to={postPage} >
       <PostCardDiv>
-        <div className="post-header">
-          <span>
-            <i className="fas fa-user-circle" />
-            {' '}
-            Posted by {' '}
-            {props.post.family_id} {' '}
-            {postTime}
-          </span>
-          {/* add edit and delete post icons */}
-        </div>
+        <PostCardHeader>
+            <div>
+              <i className="fas fa-user-circle" />
+              {' '}
+              Posted by {' '}
+              {props.post.family_id} {' '}
+              {postTime}
+            </div>
+           {props.deleteFunction && 
+              <PostCardDelete onClick={props.deleteFunction(props.post.id)}> 
+                  <i className="fas fa-trash-alt" /> 
+              </PostCardDelete> }
+        </PostCardHeader>
         <PostCardBody>
           <PostCardLabels>
             <PostCardSingleLabel>Attraction:</PostCardSingleLabel>
@@ -48,7 +52,7 @@ function PostCard(props) {
           </PostCardInformation>
         </PostCardBody>
         <div className="post-comment">
-            {props.deleteFunction && <FormButton onClick={props.deleteFunction(props.post.id)}>X</FormButton>}
+            
           </div>
       </PostCardDiv>
 
