@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { FormButton } from '../Elements';
 import {
   PostCardDiv,
   PostCardBody,
@@ -18,7 +19,7 @@ function PostCard(props) {
     .fromNow();
   // props.post.meetup_date props.post.meetup_time
   return (
-    <Link to={postPage}>
+    <Link to={postPage} >
       <PostCardDiv>
         <div className="post-header">
           <span>
@@ -43,9 +44,9 @@ function PostCard(props) {
               {props.post.num_of_children}
             </PostCardSingleLabel>
           </PostCardInformation>
-          <div className="post-comment" />
         </PostCardBody>
       </PostCardDiv>
+
     </Link>
   );
 }

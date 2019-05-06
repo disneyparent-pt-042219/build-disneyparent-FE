@@ -20,6 +20,11 @@ export const DELETING_POST = 'DELETING_POST';
 export const POST_DELETED = 'POST_DELETED';
 export const DELETE_POST_ERROR = 'DELETE_POST_ERROR';
 
+// FETCH SINGLE Post
+export const FETCHING_SINGLE = 'FETCHING_SINGLE';
+export const SINGLE_FETCHED = 'SINGLE_FETCHED';
+export const FETCH_SINGLE_ERROR = 'FETCH_SINGLE_ERROR';
+
 export const getPosts = () => (dispatch) => {
   dispatch({ type: FETCHING_POSTS });
   axios
@@ -73,5 +78,19 @@ export const deletePost = postID => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: DELETE_POST_ERROR, payload: err });
+    });
+};
+
+export const getSinglePost = postID => (dispatch) => {
+  dispatch({ type: FETCHING_SINGLE })
+  return axios
+    .get('http://localhost:9090/posts/' + postID, {
+      headers: { token: localStorage.getItem('token') }
+    })
+    .then((res) => {
+      dispatch({type: SINGLE_FETCHED, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({type: FETCH_SINGLE_ERROR, payload: err });
     });
 };
